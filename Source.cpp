@@ -1,6 +1,11 @@
 #include <stdio.h>
 
-class Math
+class Complex
+{
+
+};
+
+static class Math
 {
 public:
 	int factorial(int x)
@@ -13,9 +18,9 @@ public:
 		return ans;
 	}
 
-	long double func(int x)
+	long double func(int x, int y)
 	{
-		return exp(2, x);
+		return negExp(x, y);
 	}
 
 	
@@ -37,14 +42,23 @@ private:
 		}
 		return result;
 	}
+
+	long double negExp(long double x, int power) {
+		long double result = 1/x;
+		for (int i = 1; i < -power; i++) {
+			result /= x;
+		}
+		return result;
+	}
 };
 
 int main()
 {
 	Math math;
-	for (int i = 0; i < 1000000000; i++)
+	long double x = math.func(2, -2);
+	printf("%Lf", x);
+	for (int i = 0; i < 200000000; i++)
 	{
-		math.func(2);
-		//printf("%Lf", x);
+		math.func(2, -2);
 	}
 }
